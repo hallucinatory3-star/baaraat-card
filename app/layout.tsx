@@ -25,21 +25,11 @@ export const metadata: Metadata = {
     siteName: "Baraat Invitation",
     locale: "en_US",
     url: siteUrl,
-    images: [
-      {
-        url: `${siteUrl}/og-image.svg`,
-        width: 1200,
-        height: 630,
-        alt: "Baraat Invitation",
-        type: "image/svg+xml",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Baraat Invitation",
     description: "You're invited to celebrate at our Baraat on February 4th, 2026",
-    images: [`${siteUrl}/og-image.svg`],
   },
 };
 
