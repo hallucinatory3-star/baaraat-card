@@ -12,45 +12,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://baaraat-card.vercel.app/";
+const siteUrl = "https://baraat-card.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Baraat Invitation",
-  description: `You're invited to celebrate Baraat on February 4th, 2026`,
-  keywords: [
-    "wedding",
-    "invitation",
-    "celebration",
-    "love",
-    "marriage",
-    "ceremony",
-    "festivities",
-  ],
+  description: "You're invited to celebrate at our Baraat on February 4th, 2026",
   openGraph: {
-    title: "Tap to open your invitation.",
-    description: `Join us in the celebration filled with love and blessings.`,
+    title: "Baraat Invitation",
+    description: "You're invited to celebrate at our Baraat on February 4th, 2026",
     type: "website",
-    siteName: "Wedding Invitation",
+    siteName: "Baraat Invitation",
     locale: "en_US",
     url: siteUrl,
     images: [
       {
-        url: `${siteUrl}/opengraph-image`,
+        url: `${siteUrl}/og-image.svg`,
         width: 1200,
         height: 630,
-        alt: "Wedding Invitation",
+        alt: "Baraat Invitation",
+        type: "image/svg+xml",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tap to open your invitation.",
-    description: `Join us in the celebration filled with love and blessings.`,
-    images: [`${siteUrl}/twitter-image`],
-  },
-  other: {
-    "theme-color": "#d4af37",
+    title: "Baraat Invitation",
+    description: "You're invited to celebrate at our Baraat on February 4th, 2026",
+    images: [`${siteUrl}/og-image.svg`],
   },
 };
 
