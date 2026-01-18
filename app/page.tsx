@@ -111,14 +111,14 @@ const PARTICLE_DATA = [
   { initialX: 0.72, initialY: 0.14, animateX: -41, duration: 10, delay: 3.3 },
   { initialX: 0.25, initialY: 0.25, animateX: 20, duration: 15, delay: 0.7 },
   { initialX: 0.75, initialY: 0.65, animateX: -25, duration: 16, delay: 1.9 },
-  { initialX: 0.50, initialY: 0.10, animateX: 30, duration: 13, delay: 2.6 },
-  { initialX: 0.20, initialY: 0.80, animateX: -35, duration: 17, delay: 3.4 },
-  { initialX: 0.85, initialY: 0.50, animateX: 15, duration: 14, delay: 4.1 },
-  { initialX: 0.40, initialY: 0.30, animateX: -28, duration: 18, delay: 0.9 },
-  { initialX: 0.60, initialY: 0.70, animateX: 22, duration: 12, delay: 1.6 },
-  { initialX: 0.10, initialY: 0.55, animateX: -40, duration: 19, delay: 2.8 },
-  { initialX: 0.90, initialY: 0.35, animateX: 18, duration: 15, delay: 3.7 },
-  { initialX: 0.35, initialY: 0.90, animateX: -32, duration: 16, delay: 4.5 },
+  { initialX: 0.5, initialY: 0.1, animateX: 30, duration: 13, delay: 2.6 },
+  { initialX: 0.2, initialY: 0.8, animateX: -35, duration: 17, delay: 3.4 },
+  { initialX: 0.85, initialY: 0.5, animateX: 15, duration: 14, delay: 4.1 },
+  { initialX: 0.4, initialY: 0.3, animateX: -28, duration: 18, delay: 0.9 },
+  { initialX: 0.6, initialY: 0.7, animateX: 22, duration: 12, delay: 1.6 },
+  { initialX: 0.1, initialY: 0.55, animateX: -40, duration: 19, delay: 2.8 },
+  { initialX: 0.9, initialY: 0.35, animateX: 18, duration: 15, delay: 3.7 },
+  { initialX: 0.35, initialY: 0.9, animateX: -32, duration: 16, delay: 4.5 },
 ];
 
 // Custom hook for window size that satisfies strict lint rules
@@ -324,7 +324,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: Date }) => {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
           hours: Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
           ),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
@@ -455,14 +455,14 @@ const EventCard = ({
       className="glass rounded-3xl p-6 md:p-8 border border-[#d4af37]/20 hover:border-[#d4af37]/40 transition-all duration-500"
     >
       <motion.h3
-        className="text-2xl md:text-3xl font-playfair text-[#d4af37] mb-6 text-center"
+        className="text-2xl md:text-4xl font-playfair text-[#d4af37] mb-6 text-center"
         whileHover={{ scale: 1.02 }}
       >
         {title}
       </motion.h3>
 
       <div className="space-y-4">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
             <svg
               className="w-5 h-5 text-[#d4af37]"
@@ -479,12 +479,14 @@ const EventCard = ({
             </svg>
           </div>
           <div>
-            <p className="text-sm text-muted">Date</p>
-            <p className="font-cormorant text-lg">{date}</p>
+            <p className="text-xs md:text-sm text-muted uppercase tracking-widest">
+              Date
+            </p>
+            <p className="font-cormorant text-lg md:text-xl">{date}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
             <svg
               className="w-5 h-5 text-[#d4af37]"
@@ -501,12 +503,14 @@ const EventCard = ({
             </svg>
           </div>
           <div>
-            <p className="text-sm text-muted">Time</p>
-            <p className="font-cormorant text-lg">{time}</p>
+            <p className="text-xs md:text-sm text-muted uppercase tracking-widest">
+              Time
+            </p>
+            <p className="font-cormorant text-lg md:text-xl">{time}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
             <svg
               className="w-5 h-5 text-[#d4af37]"
@@ -529,9 +533,11 @@ const EventCard = ({
             </svg>
           </div>
           <div>
-            <p className="text-sm text-muted">Venue</p>
-            <p className="font-cormorant text-lg">{venue}</p>
-            <p className="text-sm text-muted">{address}</p>
+            <p className="text-xs md:text-sm text-muted uppercase tracking-widest">
+              Venue
+            </p>
+            <p className="font-cormorant text-lg md:text-xl">{venue}</p>
+            <p className="text-xs md:text-sm text-muted">{address}</p>
           </div>
         </div>
       </div>
@@ -550,9 +556,10 @@ const VenueMap = ({
   address: string;
 }) => {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
-  
+
   // Convert short Google Maps URL to embed URL
-  const embedMapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.5!2d74.8723!3d32.7266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDQzJzM1LjgiTiA3NMKwNTInMjAuMyJF!5e0!3m2!1sen!2sin!4v1645564756836!5m2!1sen!2sin";
+  const embedMapUrl =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.5!2d74.8723!3d32.7266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDQzJzM1LjgiTiA3NMKwNTInMjAuMyJF!5e0!3m2!1sen!2sin!4v1645564756836!5m2!1sen!2sin";
 
   return (
     <motion.div
@@ -569,7 +576,7 @@ const VenueMap = ({
         Venue Location
       </motion.h3>
 
-      <div className="flex items-center gap-3 mb-6 justify-center">
+      <div className="flex items-center gap-2 mb-6 justify-center">
         <div className="w-10 h-10 rounded-full bg-[#d4af37]/10 flex items-center justify-center">
           <svg
             className="w-5 h-5 text-[#d4af37]"
@@ -683,16 +690,16 @@ const SaveTheDateButton = ({
 
   const startDate = formatDateForCalendar(eventDate);
   const endDate = formatDateForCalendar(
-    new Date(eventDate.getTime() + 4 * 60 * 60 * 1000)
+    new Date(eventDate.getTime() + 4 * 60 * 60 * 1000),
   );
   const eventDescription = `You're invited to celebrate with us!`;
   const eventLocation = "Wedding Venue";
 
   // Google Calendar URL
   const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-    eventTitle
+    eventTitle,
   )}&dates=${startDate}/${endDate}&details=${encodeURIComponent(
-    eventDescription
+    eventDescription,
   )}&location=${encodeURIComponent(eventLocation)}`;
 
   // Generate ICS file
@@ -730,7 +737,7 @@ END:VCALENDAR`;
             e.stopPropagation();
             setShowOptions(!showOptions);
           }}
-          className="px-8 py-4 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 hover:bg-[#d4af37]/20 hover:border-[#d4af37] transition-all duration-300 flex items-center gap-3"
+          className="px-8 py-4 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 hover:bg-[#d4af37]/20 hover:border-[#d4af37] transition-all duration-300 flex items-center gap-2"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -780,7 +787,7 @@ END:VCALENDAR`;
                 href={googleCalendarUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors"
+                className="flex items-center gap-2 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors"
                 onClick={() => setShowOptions(false)}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#d4af37">
@@ -793,7 +800,7 @@ END:VCALENDAR`;
                   generateICS();
                   setShowOptions(false);
                 }}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
+                className="flex items-center gap-2 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
               >
                 <svg
                   className="w-5 h-5 text-[#d4af37]"
@@ -815,7 +822,7 @@ END:VCALENDAR`;
                   generateICS();
                   setShowOptions(false);
                 }}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
+                className="flex items-center gap-2 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
               >
                 <svg
                   className="w-5 h-5 text-[#d4af37]"
@@ -853,7 +860,7 @@ const ShareButton = () => {
     const message = `${shareUrl}`;
     window.open(
       `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`,
-      "_blank"
+      "_blank",
     );
   };
 
@@ -902,7 +909,7 @@ const ShareButton = () => {
                 shareWhatsApp();
                 setShowOptions(false);
               }}
-              className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
+              className="flex items-center gap-2 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
             >
               <svg
                 className="w-5 h-5 text-green-500"
@@ -918,7 +925,7 @@ const ShareButton = () => {
                 copyLink();
                 setShowOptions(false);
               }}
-              className="flex items-center gap-3 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
+              className="flex items-center gap-2 px-4 py-3 hover:bg-[#d4af37]/20 transition-colors w-full"
             >
               <svg
                 className="w-5 h-5 text-[#d4af37]"
@@ -982,8 +989,10 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
           transition={{ delay: 0.7 }}
           className="text-xl md:text-6xl font-playfair text-[#d4af37] mb-8"
         >
-          <p className="mb-4">You&apos;re cordially invited, <br />
-           <span className="">to attend the departure of Baraat.</span></p>
+          <p className="mb-4">
+            You&apos;re cordially invited, <br />
+            <span className="">to attend the departure of Baraat.</span>
+          </p>
         </motion.h1>
 
         <motion.button
@@ -991,7 +1000,7 @@ const WelcomeOverlay = ({ onEnter }: { onEnter: () => void }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
           onClick={onEnter}
-          className="px-8 py-4 rounded-full bg-[#d4af37] text-black font-semibold text-lg font--inter hover:bg-[#c4a030] transition-colors flex items-center gap-3 mx-auto"
+          className="px-8 py-4 rounded-full bg-[#d4af37] text-black font-semibold text-lg font--inter hover:bg-[#c4a030] transition-colors flex items-center gap-2 mx-auto"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -1039,7 +1048,7 @@ export default function Home() {
     // Start music on enter - Royalty-free romantic song with vocals
     if (!audioRef.current) {
       audioRef.current = new Audio(
-        "https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3"
+        "https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3",
       );
       audioRef.current.loop = true;
       audioRef.current.volume = 0.4;
@@ -1083,18 +1092,30 @@ export default function Home() {
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
           {/* Subtle corner decorations */}
           <div className="absolute top-0 left-0 w-64 h-64 opacity-5">
-            <svg viewBox="0 0 200 200" className="w-full h-full" fill="none" stroke="#d4af37" strokeWidth="1">
+            <svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="1"
+            >
               <path d="M0 50 Q50 0, 100 30 T200 50" />
               <path d="M0 100 Q30 50, 80 80 T200 100" />
             </svg>
           </div>
           <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5">
-            <svg viewBox="0 0 200 200" className="w-full h-full" fill="none" stroke="#d4af37" strokeWidth="1">
+            <svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              fill="none"
+              stroke="#d4af37"
+              strokeWidth="1"
+            >
               <path d="M200 150 Q150 200, 100 170 T0 150" />
               <path d="M200 100 Q170 150, 120 120 T0 100" />
             </svg>
           </div>
-          
+
           {/* Subtle floating dots */}
           {[...Array(8)].map((_, i) => (
             <motion.div
@@ -1259,7 +1280,8 @@ export default function Home() {
                 </span>
               </p>
 
-              <p className="pt-6 font-cormorant text-foreground leading-relaxed"
+              <p
+                className="pt-6 font-cormorant text-foreground leading-relaxed"
                 style={{ fontSize: "var(--fs-lead)" }}
               >
                 <span className="font-semibold text-foreground whitespace-nowrap">
@@ -1276,27 +1298,26 @@ export default function Home() {
                 className="font-cormorant text-foreground leading-relaxed"
                 style={{ fontSize: "var(--fs-body)" }}
               >
-                joyfully open their hearts to invite you to the Baraat celebration of their beloved son
+                joyfully open their hearts to invite you to the Baraat
+                celebration of their beloved son
               </p>
             </div>
 
             {/* Names */}
             <div className="space-y-5 my-2">
-              <p
-                className="font-playfair text-[#d4af37] font-bold tracking-wide text-4xl md:text-6xl"
-              >
+              <p className="font-playfair text-[#d4af37] font-bold tracking-wide text-4xl md:text-6xl">
                 {groomName}
               </p>
 
-              <span className="text-lg text-[#d4af37] font-cormorant">As he begins timeless journey hand in hand</span>
+              <span className="text-lg text-[#5f5843] font-cormorant italic">
+                As he begins timeless journey hand in hand
+              </span>
 
-              <p className="font-cormorant text-[#d4af37] tracking-widest uppercase text-sm">
+              <p className="font-cormorant text-[#5f5843] tracking-widest text-lg italic">
                 with
               </p>
 
-              <p
-                className="font-playfair text-[#d4af37] font-bold tracking-wide text-4xl md:text-6xl"
-              >
+              <p className="font-playfair text-[#d4af37] font-bold tracking-wide text-4xl md:text-6xl">
                 {brideName}
               </p>
             </div>
@@ -1317,22 +1338,27 @@ export default function Home() {
             </p>
 
             <p className="font-cormorant text-foreground m-4">
-              On 4th February, 2026 at<br />
+              On 4th February, 2026 at
+              <br />
               <span className="block">Zone by the Park, Jammu</span>
             </p>
 
             {/* Presence Message */}
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
-              className="mb-8"
+              transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
+              className="mb-12 max-w-xl text-center"
             >
-              <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
+              {/* Subtle Divider */}
+              <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+
+              <p className="text-md md:text-xl font-cormorant text-foreground tracking-wide leading-relaxed">
                 Your gracious presence and heartfelt blessings
               </p>
-              <p className="text-lg md:text-xl font-cormorant text-foreground leading-relaxed">
+
+              <p className="mt-2 text-md md:text-xl font-cormorant text-foreground/80 leading-relaxed">
                 will add joy, warmth, and meaning to our celebration.
               </p>
             </motion.div>
@@ -1385,7 +1411,7 @@ export default function Home() {
                 ⸻
               </p>
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-playfair text-[#d4af37] mb-4">
+            <h2 className="text-xl md:text-5xl font-playfair text-[#d4af37] mb-4">
               You&apos;re Invited to the Baraat
             </h2>
           </motion.div>
@@ -1483,7 +1509,7 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-6 flex flex-wrap items-center justify-center gap-3 md:gap-4"
+            className="mb-6 flex flex-wrap items-center justify-center gap-2 md:gap-4"
           >
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair text-[#d4af37] leading-tight">
               {groomName}
@@ -1511,7 +1537,7 @@ export default function Home() {
             className="mb-8"
           >
             <p className="text-base md:text-lg font-cormorant text-foreground/80 leading-relaxed">
-              With special love and blessings from beloved nephew:{" "}
+              With special love and blessings from beloved nephew{" "}
               <span className="font-semibold text-foreground text-lg md:text-xl">
                 Nemo
               </span>
@@ -1536,7 +1562,7 @@ export default function Home() {
             <p className="text-base md:text-lg font-cormorant text-muted mb-2">
               For queries reach out to:
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-2 text-base md:text-lg font-cormorant">
+            <div className="flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm font-cormorant">
               <a
                 href="tel:+918899277840"
                 className="text-foreground hover:text-[#d4af37] transition-colors"
@@ -1692,7 +1718,7 @@ const MusicPlayer = ({
     if (!audioRef.current) {
       // Royalty-free romantic song with vocals
       audioRef.current = new Audio(
-        "https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3"
+        "https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3",
       );
       audioRef.current.loop = true;
       audioRef.current.volume = 0.4;

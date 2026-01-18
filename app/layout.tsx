@@ -12,21 +12,45 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://baaraat-card.vercel.app/";
+
 export const metadata: Metadata = {
-  title: "Baraat Invitation - Vikram & Shagun",
-  description: "You're invited to celebrate with Vikram & Shagun at their Baraat on February 4th, 2026",
+  metadataBase: new URL(siteUrl),
+  title: "Baraat Invitation",
+  description: `You're invited to celebrate Baraat on February 4th, 2026`,
+  keywords: [
+    "wedding",
+    "invitation",
+    "celebration",
+    "love",
+    "marriage",
+    "ceremony",
+    "festivities",
+  ],
   openGraph: {
-    title: "Baraat Invitation - Vikram & Shagun",
-    description: "You're invited to celebrate with Vikram & Shagun at their Baraat on February 4th, 2026",
+    title: "Tap to open your invitation.",
+    description: `Join us in the celebration filled with love and blessings.`,
+    type: "website",
+    siteName: "Wedding Invitation",
+    locale: "en_US",
+    url: siteUrl,
     images: [
       {
-        url: "/og-image.svg",
+        url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Baraat Invitation",
+        alt: "Wedding Invitation",
       },
     ],
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tap to open your invitation.",
+    description: `Join us in the celebration filled with love and blessings.`,
+    images: [`${siteUrl}/twitter-image`],
+  },
+  other: {
+    "theme-color": "#d4af37",
   },
 };
 
