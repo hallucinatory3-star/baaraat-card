@@ -1290,8 +1290,7 @@ export default function Home() {
                 className="font-cormorant text-foreground leading-relaxed"
                 style={{ fontSize: "var(--fs-body)" }}
               >
-                joyfully open their hearts to invite you to the Wedding
-                celebration of their beloved son
+                joyfully open hearts to invite you to witness a tale of hearts entwining, where promises are whispered, dreams are shared and a lifetime begins in the glow of sacred vows - at the wedding celebration of their beloved son
               </p>
             </div>
 
