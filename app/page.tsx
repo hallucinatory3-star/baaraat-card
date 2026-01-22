@@ -1154,29 +1154,13 @@ export default function Home() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mb-5 font-playfair text-[#d4af37]/80 leading-relaxed tracking-wide"
-            style={{ fontSize: "var(--fs-sacred)" }}
+            className="mb-8 font-playfair text-[#d4af37]/80 leading-relaxed tracking-wide"
+            style={{ fontSize: "1.3rem" }}
           >
             वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
             <br />
             निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </motion.p>
-
-          {/* We're getting married */}
-          <p
-            className="font-cormorant text-foreground leading-relaxed my-8"
-            style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
-          >
-            We're getting married
-          </p>
-
-          {/* Hashtag */}
-          <p
-            className="font-cormorant text-foreground leading-relaxed mb-6 font-bold"
-            style={{ fontSize: "calc(var(--fs-body) * 1.2)" }}
-          >
-            #ShaiVikmeSauGun
-          </p>
 
           {/* Divider */}
           <div className="flex items-center justify-center gap-4 mb-8">
@@ -1199,6 +1183,14 @@ export default function Home() {
               className="h-px bg-gradient-to-l from-transparent to-[#d4af37]"
             />
           </div>
+
+          {/* Hashtag */}
+          <p
+            className="font-cormorant text-foreground leading-relaxed mb-6 font-bold"
+            style={{ fontSize: "22px" }}
+          >
+            #ShaiVikmeSauGun
+          </p>
 
           {/* Date */}
           <p
@@ -1271,11 +1263,11 @@ export default function Home() {
                 className="font-cormorant text-muted leading-relaxed"
                 style={{ fontSize: "var(--fs-lead)" }}
               >
-                <span className="font-semibold text-foreground/60 whitespace-nowrap">
+                <span className="font-semibold whitespace-nowrap">
                   Late Smt. Ram Devi &
                 </span>
                 <br />
-                <span className="font-semibold text-foreground/60 whitespace-nowrap">
+                <span className="font-semibold whitespace-nowrap">
                   Late Sh. Bhoop Ram Shan,
                 </span>
               </p>
@@ -1298,22 +1290,22 @@ export default function Home() {
                 className="font-cormorant text-foreground leading-relaxed"
                 style={{ fontSize: "var(--fs-body)" }}
               >
-                joyfully open their hearts to invite you to the Baraat
+                joyfully open their hearts to invite you to the Wedding
                 celebration of their beloved son
               </p>
             </div>
 
             {/* Names */}
-            <div className="space-y-5 my-2">
+            <div className="space-y-2 my-2">
               <p className="font-playfair text-[#d4af37] font-bold tracking-wide text-4xl md:text-6xl">
                 {groomName}
               </p>
 
-              <span className="text-lg text-[#5f5843] font-cormorant italic">
-                As he begins timeless journey hand in hand
+              <span className="text-md font-cormorant italic">
+                as he begins his timeless journey hand in hand
               </span>
 
-              <p className="font-cormorant text-[#5f5843] tracking-widest text-lg italic">
+              <p className="font-cormorant tracking-widest text-md italic">
                 with
               </p>
 
@@ -1349,7 +1341,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-              className="mb-12 max-w-xl text-center"
+              className="max-w-xl text-center"
             >
               {/* Subtle Divider */}
               <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
@@ -1366,7 +1358,27 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="section-divider max-w-2xl mx-auto" />
+      {/* Golden Divider */}
+      <div className="flex items-center justify-center gap-4 my-10">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: 100 }}
+          transition={{ duration: 1.2 }}
+          className="h-px bg-gradient-to-r from-transparent to-[#d4af37]"
+        />
+        <motion.div
+          initial={{ scale: 0, rotate: 0 }}
+          whileInView={{ scale: 1, rotate: 45 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-3 h-3 border-2 border-[#d4af37]"
+        />
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: 100 }}
+          transition={{ duration: 1.2 }}
+          className="h-px bg-gradient-to-l from-transparent to-[#d4af37]"
+        />
+      </div>
 
       {/* Events Section */}
       <section className="px-4 relative">
@@ -1395,26 +1407,6 @@ export default function Home() {
           </div>
         </motion.div>
         <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="mb-8"
-            >
-              <p className="text-2xl md:text-3xl text-[#d4af37] font-cormorant">
-                ⸻
-              </p>
-            </motion.div>
-            <h2 className="text-xl md:text-5xl font-playfair text-[#d4af37] mb-4">
-              You&apos;re Invited to the Baraat
-            </h2>
-          </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <EventCard
@@ -1503,31 +1495,6 @@ export default function Home() {
             <div className="h-px w-20 bg-gradient-to-l from-transparent to-[#d4af37]" />
           </div>
 
-          {/* Main heading */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-6 flex flex-wrap items-center justify-center gap-2 md:gap-4"
-          >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair text-[#d4af37] leading-tight">
-              {groomName}
-            </h2>
-            <motion.span
-              initial={{ scale: 0, rotate: -45 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-              className="text-2xl md:text-4xl text-[#d4af37] font-cormorant font-light italic"
-            >
-              &amp;
-            </motion.span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-playfair text-[#d4af37] leading-tight">
-              {brideName}
-            </h2>
-          </motion.div>
-
           {/* Nemo Mention */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -1536,8 +1503,8 @@ export default function Home() {
             transition={{ delay: 0.6 }}
             className="mb-8"
           >
-            <p className="text-base md:text-lg font-cormorant text-foreground/80 leading-relaxed">
-              With special love and blessings from beloved nephew{" "}
+            <p className="text-sm md:text-lg font-cormorant text-foreground/80 leading-relaxed">
+              With special love and blessings from beloved nephew:{" "}
               <span className="font-semibold text-foreground text-lg md:text-xl">
                 Nemo
               </span>
